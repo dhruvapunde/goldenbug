@@ -7,8 +7,8 @@ def hamming_distance(p, q):
             dist += 1
     return dist
 
-def genotype(geno_one, geno_two):
-    "calculates recombination of two alleles"
+def genotypes(geno_one, geno_two):
+    "calculates recombination of two alleles, at the moment only for 2 alleles (16 genotypes)"
     geno_one = sorted(geno_one, key=lambda L: (L.lower(), L))
     geno_two = sorted(geno_two, key=lambda L: (L.lower(), L))
     sorted_geno_one = []
@@ -45,3 +45,10 @@ def genotype(geno_one, geno_two):
         for j in range(len(result_two)):
             list_of_genotypes.append(''.join(sorted(result_one[i] + result_two[j], key=lambda L: (L.lower(), L))))
     return list_of_genotypes
+
+def genotypic_frequency(particular, list_of_genotypes):
+    "calculates the frequency of occurance in a list of genotype"
+    particular = ''.join(sorted(particular, key=lambda L: (L.lower(), L)))
+    number_of_occurances = list_of_genotypes.count(particular)
+    frequency = number_of_occurances*100/len(list_of_genotypes)
+    return frequency
